@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/css/normalize.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <style>
+        body {
+            font-family: cairo;
+        }
+
+        nav {
+            background-color: #2d4196;
+            position: sticky !important;
+            top: 0;
+            z-index: 1000;
+        }
+
+        #navbarNav ul {
+            gap: 30px;
+        }
+
+        nav .nav-item a {
+            color: #d9e8ff;
+            transition: color 0.1s, font-weight 0.1s;
+
+        }
+
+        nav .nav-item a:hover {
+            font-weight: bold;
+            color: #fff;
+
+        }
+
+        nav .navbar-brand {
+            color: #fff;
+            font-family: cairo;
+            font-size: 1.4rem;
+        }
+
+        .btn-login a {
+            background-color: #ffffff;
+            border-radius: 0.3rem;
+            color: #000 !important;
+            padding-left: 1.2rem !important;
+            padding-right: 1.2rem !important;
+        }
+
+
+
+        section.hero {
+            position: relative;
+            background-image: url("./assets/imgaes/home.png");
+            background-size: cover;
+            background-position: center;
+            min-height: 900px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            text-align: center;
+            color: white;
+            z-index: 1;
+        }
+
+        section.hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #ffffff2c;
+            z-index: -1;
+        }
+
+
+
+        section.hero h1 {
+            color: #000;
+            font-weight: 700;
+
+        }
+
+        section.hero p {
+            font-size: 1.5rem;
+            color: #2b2a2a;
+
+        }
+
+        section.hero a[class="btn"] {
+            background-color: #04683c;
+            color: #d9e8ff;
+            padding: 10px 20px;
+            margin-top: 40px;
+            border-radius: .5rem;
+            font-size: 1.3rem;
+        }
+
+
+
+        .card {
+
+            background-color: #fff;
+            color: #2d4196;
+            border-radius: 0.6rem;
+            border: solid 0.8px #2d4196;
+            transition: color 1.5s, "background-color" 1.5s;
+        }
+
+        .Features {
+            min-height: 400px;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            gap: 60px;
+        }
+
+
+
+        .card:hover {
+            background-color: #2d4196;
+            color: #fff
+        }
+
+        .card-body {
+            min-height: 200px;
+            text-align: center;
+            justify-content: center;
+            display: flex;
+            flex-direction: column;
+        }
+
+
+        footer .col-md-4 {
+            position: relative;
+            padding: 20px;
+        }
+
+        footer {
+            background-color: #2d4196;
+        }
+
+        footer .col-md-4:not(:first-child) {
+            border-left: 2px solid #ccc;
+        }
+
+
+
+        footer .row {
+            display: flex;
+            align-items: center;
+            text-align: center;
+        }
+
+        .list-unstyled li {
+            margin: 10px;
+
+        }
+
+        .list-unstyled li a {
+            color: #fff;
+            text-decoration: none;
+            transition: font-weight 0.1s;
+        }
+
+        .list-unstyled li a:hover {
+            font-weight: bold;
+        }
+
+        .brand h3 {
+            margin-bottom: 50px;
+            font-size: 2.5rem;
+        }
+
+        .navbar-toggler {
+            border-color: #ffffff !important;
+        }
+
+        .navbar-toggler-icon {
+            background-color: #ffffff !important;
+            -webkit-mask: url("data:image/svg+xml;charset=UTF8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='white' stroke-width='3' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E") no-repeat center;
+            mask: url("data:image/svg+xml;charset=UTF8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='white' stroke-width='3' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E") no-repeat center;
+        }
+
+        @media (max-width: 768px) {
+            .btn-login a {
+                background-color: unset;
+                border-radius: 0;
+                color: #fff !important;
+                padding-left: 0 !important;
+                padding-right: 0 !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            section.hero {
+                background-size: cover;
+                background-position: center;
+                min-height: 400px;
+                padding: 50px 20px;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .hero .btn {
+                font-size: 1rem;
+                padding: 10px 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            section.hero a[class="btn"] {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            section.hero a[class="btn"] {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .Features {
+                min-height: 350px;
+                gap: 40px;
+            }
+
+            .Features .row {
+                gap: 25px
+            }
+        }
+
+        @media (max-width: 768px) {
+            .Features {
+                min-height: auto;
+                gap: 30px;
+            }
+
+            .Features .row {
+                gap: 20px
+            }
+        }
+
+        @media (max-width: 480px) {
+            .Features {
+                gap: 20px;
+                padding: 10px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            footer .col-md-4 {
+                border-left: none !important;
+                border-top: 2px solid #ccc;
+                padding-top: 15px;
+            }
+
+            footer .col-md-4:first-child {
+                border-top: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <a class="navbar-brand" href="./">Prime Care</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="./">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact us</a>
+                </li>
+                <li class="nav-item btn-login">
+                    <a class="nav-link" href="#">Login</a>
+                </li>
+                <li class="nav-item btn-login">
+                    <a class="nav-link" href="#">Signup</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Area -->
+    <section class="hero bg-primary text-white text-center py-5">
+        <h1 class="display-4">Welcome to Prime Care</h1>
+        <p class="lead">Your health, Our Priority</p>
+        <a href="#" class="btn">Book an appointment</a>
+    </section>
+
+    <!-- Features -->
+    <section class="Features container my-5">
+        <h2 class="text-center mb-4">Our Features</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Book Appointment</h5>
+                        <p class="card-text">Schedule your appointment with ease.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Doctor Availability</h5>
+                        <p class="card-text">Check doctor’s schedule and availability.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Notification Reminders</h5>
+                        <p class="card-text">Receive timely notifications and updates.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <ul class="list-unstyled">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About us</a></li>
+                        <li><a href="#">Contact us</a></li>
+                        <li><a href="#">Login</a></li>
+                        <li><a href="#">Signup</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 text-center brand">
+                    <h3>Prime Care</h3>
+                    <p>© 2024 Prime Care. All rights reserved.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Contact Us</h5>
+                    <p><i class="fa fa-envelope"></i> contact@primecare.com</p>
+                    <p><i class="fa fa-phone"></i> +966 123 456 789</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+
+</html>
