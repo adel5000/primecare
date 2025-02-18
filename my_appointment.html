@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book Appointment</title>
+    <title>My Bookings</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
@@ -65,10 +65,10 @@
         /* end navbar */
 
         /* Container */
-        .form-container {
-            max-width: 400px;
+        .bookings-container {
+            max-width: 800px;
             margin: 50px auto;
-            background: #1e1e1e;
+            background: #2b2b2b;
             padding: 30px;
             border-radius: 10px;
             box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.1);
@@ -80,56 +80,42 @@
             font-weight: bold;
         }
 
-        .input-group {
+        .booking-item {
+            background-color: #3b3b3b;
+            padding: 15px;
+            border-radius: 5px;
             margin-bottom: 15px;
-            background-color: #2b2b2b;
-            border-radius: 5px;
-            padding: 5px;
-            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-left: 5px solid #04683c;
         }
 
-        .input-group i {
+        .booking-item h4 {
+            margin: 0;
+            color: #ffffff;
+        }
+
+        .booking-item p {
+            margin: 5px 0;
             color: #bbbbbb;
-            position: absolute;
-            top: 28%;
-            left: 3%;
-            font-size: 1.2rem;
         }
 
-        .input-group select,
-        .input-group input {
-            width: 100%;
-            padding: 0px 12px 0px 30px;
-            border: none;
-            border-radius: 5px;
-            background-color: #2b2b2b;
-            color: white;
-            outline: none;
-        }
-
-        button {
-            background-color: #04683c;
+        .cancel-btn {
+            background-color: #d9534f;
             color: #fff;
             border: none;
-            padding: 12px;
-            width: 100%;
+            padding: 8px 12px;
             border-radius: 5px;
-            font-size: 1.1rem;
-            margin-top: 20px;
             cursor: pointer;
-            transition: "background" 0.3s;
+            transition: 'background' 0.3s;
         }
 
-        button:hover {
-            background-color: #034d2c;
+        .cancel-btn:hover {
+            background-color: #c9302c;
         }
 
-        .input-group select:focus,
-        .input-group input:focus {
-            background-color: #3b3b3b;
-        }
-
-        /* start footer */
+        /* Footer */
         @media (max-width: 768px) {
             footer .col-md-4 {
                 border-left: none !important;
@@ -179,8 +165,6 @@
             margin-bottom: 50px;
             font-size: 2.5rem;
         }
-
-        /* end footer */
     </style>
 </head>
 
@@ -195,7 +179,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-link" href="./">Home</a>
                 </li>
                 <li class="nav-item">
@@ -220,38 +204,37 @@
         </div>
     </nav>
 
-    <!-- Booking Form -->
-    <div class="form-container">
-        <h2><i class="fas fa-calendar-check"></i> Book an Appointment</h2>
-        <form action="#" method="POST">
-            <!-- اختيار الدكتور -->
-            <div class="input-group">
-                <i class="fas fa-user-md"></i>
-                <select name="doctor_id" id="doctor" required>
-                    <option value="">Choose a Doctor</option>
-                    <option value="1">Dr. Ahmed - Cardiology</option>
-                    <option value="2">Dr. Sara - Dermatology</option>
-                    <option value="3">Dr. Khaled - Neurology</option>
-                </select>
-            </div>
+    <!-- Bookings Section -->
+    <div class="bookings-container">
+        <h2><i class="fas fa-calendar-alt"></i> My Bookings</h2>
 
-            <!-- اختيار التاريخ -->
-            <div class="input-group">
-                <i class="fas fa-calendar"></i>
-                <input type="date" id="appointment_date" name="appointment_date" required>
+        <div class="booking-item">
+            <div>
+                <h4>Dr. Ahmed - Cardiology</h4>
+                <p><i class="fas fa-calendar"></i> 2025-03-10</p>
+                <p><i class="fas fa-clock"></i> 10:00 AM</p>
             </div>
+            <button class="cancel-btn"><i class="fas fa-times"></i> Cancel</button>
+        </div>
 
-            <!-- اختيار الساعة -->
-            <div class="input-group">
-                <i class="fas fa-clock"></i>
-                <select name="appointment_time" id="appointment_time" required>
-                    <option value="">Select a Time</option>
-                </select>
+        <div class="booking-item">
+            <div>
+                <h4>Dr. Sara - Dermatology</h4>
+                <p><i class="fas fa-calendar"></i> 2025-03-15</p>
+                <p><i class="fas fa-clock"></i> 2:30 PM</p>
             </div>
+            <button class="cancel-btn"><i class="fas fa-times"></i> Cancel</button>
+        </div>
 
-            <!-- زر الحجز -->
-            <button type="submit"><i class="fas fa-check"></i> Book Now</button>
-        </form>
+        <div class="booking-item">
+            <div>
+                <h4>Dr. Khaled - Neurology</h4>
+                <p><i class="fas fa-calendar"></i> 2025-03-20</p>
+                <p><i class="fas fa-clock"></i> 11:00 AM</p>
+            </div>
+            <button class="cancel-btn"><i class="fas fa-times"></i> Cancel</button>
+        </div>
+
     </div>
 
     <!-- Footer -->
@@ -279,16 +262,6 @@
             </div>
         </div>
     </footer>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            let dateInput = document.getElementById("appointment_date");
-
-            // تحديد التاريخ الحالي كأقل قيمة
-            let today = new Date().toISOString().split("T")[0];
-            dateInput.setAttribute("min", today);
-        });
-    </script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
