@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
+    <title>Signup Page</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="./assets/css/normalize.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
@@ -122,6 +122,44 @@
             font-size: 16px;
         }
 
+        .role select {
+            width: 75%;
+    padding: 5px 13px 5px 41px;
+    height: 46.39px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            background-color: #1f1f1f;
+            color: #fff;
+            margin-top: 15px;
+
+        }
+
+        .role select:focus {
+            width: 75%;
+    padding: 5px 13px 5px 41px;
+    height: 46.39px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            background-color: #1f1f1f;
+            color: #fff;
+            margin-top: 15px;
+        }
+
+        /* تنسيق placeholder */
+        input::placeholder,
+        select::placeholder {
+            color: #bbb;
+            /* اللون الرمادي الفاتح */
+            font-size: 1rem;
+            /* حجم الخط */
+            font-family: cairo, sans-serif;
+            /* نفس الخط المستخدم في باقي الحقول */
+            opacity: 1;
+            /* جعل الشفافية واضحة */
+        }
+
+
+
         .form-container input {
             width: 75%;
             padding: 13px 13px 13px 45px;
@@ -200,78 +238,6 @@
         }
 
         @media (max-width: 768px) {
-            .btn-login a {
-                background-color: unset;
-                border-radius: 0;
-                color: #fff !important;
-                padding-left: 0 !important;
-                padding-right: 0 !important;
-            }
-        }
-
-        @media (max-width: 768px) {
-            section.hero {
-                background-size: cover;
-                background-position: center;
-                min-height: 400px;
-                /* padding: 50px 20px; */
-            }
-
-            .hero h1 {
-                font-size: 1.8rem;
-            }
-
-            .hero p {
-                font-size: 1.2rem;
-            }
-
-            .hero .btn {
-                font-size: 1rem;
-                /* padding: 10px 20px; */
-            }
-        }
-
-        @media (max-width: 768px) {
-            section.hero a[class="btn"] {
-                font-size: 1rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            section.hero a[class="btn"] {
-                font-size: 0.9rem;
-            }
-        }
-
-        @media (max-width: 1024px) {
-            .Features {
-                min-height: 350px;
-                gap: 40px;
-            }
-
-            .Features .row {
-                gap: 25px
-            }
-        }
-
-        @media (max-width: 768px) {
-            .Features {
-                min-height: auto;
-                gap: 30px;
-            }
-
-            .Features .row {
-                gap: 20px
-            }
-        }
-
-        @media (max-width: 480px) {
-            .Features {
-                gap: 20px;
-            }
-        }
-
-        @media (max-width: 768px) {
             footer .col-md-4 {
                 border-left: none !important;
                 border-top: 2px solid #ccc;
@@ -287,6 +253,12 @@
                 width: 80%;
 
             }
+        }
+
+        .role {
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
     </style>
 </head>
@@ -320,23 +292,71 @@
         </div>
     </nav>
 
-    <!-- Login Section -->
+    <!-- Signup Section -->
     <section class="hero">
         <div class="form-container">
-            <h1>Login to Prime Care</h1>
-            <form>
+            <h1>Signup for Prime Care</h1>
+            <form action="signup_process.php" method="POST">
+                <!-- Choose Role -->
+                <label for="role">Choose Role:</label>
+                <div class="role">
+                    <select id="role" name="role" class="form-control" required>
+                        <option value="no" hidden>Choose a Role</option>
+                        <option value="doctor">Doctor</option>
+                        <option value="patient">Patient</option>
+                    </select>
+                </div>
+
+
+                <!-- Common Fields -->
                 <div class="input-container">
                     <i class="fa fa-user"></i>
-                    <input type="text" placeholder="Username or Email" required>
+                    <input type="text" name="firstname" placeholder="First Name" required>
                 </div>
 
                 <div class="input-container">
-                    <i class="fa fa-lock"></i>
-                    <input type="password" placeholder="Password" required>
+                    <i class="fa fa-user"></i>
+                    <input type="text" name="lastname" placeholder="Last Name" required>
                 </div>
-                <button type="submit">Login</button>
+
+                <div class="input-container">
+                    <i class="fa fa-envelope"></i>
+                    <input type="email" name="email" placeholder="Email Address" required>
+                </div>
+
+                <div class="input-container">
+                    <i class="fa fa-phone"></i>
+                    <input type="tel" name="phone" placeholder="Phone Number" required>
+                </div>
+
+                <div class="input-container">
+                    <i class="fa fa-key"></i>
+                    <input type="password" name="password" placeholder="Create Password" required>
+                </div>
+
+                <div class="input-container">
+                    <i class="fa fa-key"></i>
+                    <input type="password" name="confirm_password" placeholder="Confirm Password" required>
+                </div>
+
+                <!-- Doctor Only Fields -->
+                <div id="doctor_fields" style="display: none;">
+                    <div class="input-container">
+                        <i class="fa fa-stethoscope"></i>
+                        <input type="text" name="specialization" placeholder="Specialization" required>
+                    </div>
+                </div>
+
+                <!-- Patient Only Fields -->
+                <div id="patient_fields" style="display: none;">
+                    <div class="input-container">
+                        <i class="fa fa-home"></i>
+                        <input type="text" name="address" placeholder="Address" required>
+                    </div>
+                </div>
+
+                <button type="submit">Register</button>
             </form>
-            <a href="#">Forgot your password?</a>
         </div>
     </section>
 
@@ -369,6 +389,20 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <script>
+        // Show/Hide Fields Based on Role Selection
+        document.getElementById('role').addEventListener('change', function () {
+            var role = this.value;
+            if (role === 'doctor') {
+                document.getElementById('doctor_fields').style.display = 'block';
+                document.getElementById('patient_fields').style.display = 'none';
+            } else {
+                document.getElementById('doctor_fields').style.display = 'none';
+                document.getElementById('patient_fields').style.display = 'block';
+            }
+        });
+    </script>
 </body>
 
 </html>
